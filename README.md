@@ -57,17 +57,20 @@ user-management-system/
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/aminharoon/user-management-system-.git
    cd user-management-system-
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Start the development server**
+
    ```bash
    npm run dev
    ```
@@ -85,11 +88,13 @@ user-management-system/
 ## 💡 Usage
 
 1. **Add a New User**
+
    - Fill in the username, email, and role
    - Optionally add a profile picture URL
    - Click submit to add the user
 
 2. **View Users**
+
    - All registered users are displayed in cards
    - Each card shows username, email, role, and timestamp
    - Profile pictures or initials are displayed
@@ -101,6 +106,7 @@ user-management-system/
 ## 🎯 Key Learning Points
 
 This project demonstrates:
+
 - React hooks (useState) for state management
 - localStorage integration for data persistence
 - Component-based architecture
@@ -113,6 +119,7 @@ This project demonstrates:
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to:
+
 1. Fork the project
 2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
@@ -126,6 +133,7 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 👨‍💻 Author
 
 **Amin Haroon**
+
 - GitHub: [@aminharoon](https://github.com/aminharoon)
 
 ## 🙏 Acknowledgments
