@@ -6,6 +6,14 @@ function App() {
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
+  const [isData, setIsData] = useState(() => {
+    const data = localStorage.getItem("users");
+    if (data) {
+      return true;
+    } else {
+      return false;
+    }
+  });
   const [allUsers, setAllUsers] = useState(() => {
     const data = localStorage.getItem("users");
     if (data) {
@@ -28,10 +36,18 @@ function App() {
     setAllUsers(oldUser);
     console.log(oldUser);
     localStorage.setItem("users", JSON.stringify(oldUser));
+    setIsData(true);
+    console.log(isData);
     setUsername("");
     setEmail("");
     setRole("");
     setProfilePicture("");
+  };
+
+  const handleDelete = () => {
+    setAllUsers([]);
+    localStorage.clear();
+    setIsData(false);
   };
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8 ">
@@ -117,9 +133,47 @@ function App() {
               </div>
             </div>
           </form>
-          <div className="bg-white rounded-lg shadow-lg p-6 overflow-hidden  ">
-            <h2 className="text-2xl font-semibold text-gray-700 mb-6">
-              <span>All Users :</span> {allUsers.length}
+
+          {isData == true ? (
+            <div className="bg-white rounded-lg shadow-lg p-6 overflow-hidden  ">
+              <h2 className="text-2xl font-semibold text-gray-700 mb-6 flex justify-between">
+                <span>All Users : {allUsers.length}</span>
+                <button
+                  onClick={handleDelete}
+                  className="px-6 py-2 bg-red-600 text-white rounded-lg font-sans text-sm hover:bg-red-700 transition-colors hover:shadow-lg hover:cursor-pointer"
+                >
+                  Delete All
+                </button>
+              </h2>
+              {allUsers.length == 0 ? (
+                <p className="text-gray-500 none ">No users added yet.</p>
+              ) : (
+                <div className=" space-y-4 max-h-[390px] overflow-auto scrollbar-hide">
+                  {allUsers.map((user) => {
+                    return (
+                      <Card
+                        key={user.id}
+                        user={user}
+                        allUsers={allUsers}
+                        setAllUsers={setAllUsers}
+                      />
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          ) : (
+            "No Data Found"
+          )}
+          {/* <div className="bg-white rounded-lg shadow-lg p-6 overflow-hidden  ">
+            <h2 className="text-2xl font-semibold text-gray-700 mb-6 flex justify-between">
+              <span>All Users : {allUsers.length}</span>
+              <button
+                onClick={handleDelete}
+                className="px-6 py-2 bg-red-600 text-white rounded-lg font-sans text-sm hover:bg-red-700 transition-colors hover:shadow-lg hover:cursor-pointer"
+              >
+                Delete All
+              </button>
             </h2>
             {allUsers.length == 0 ? (
               <p className="text-gray-500 none ">No users added yet.</p>
@@ -137,7 +191,7 @@ function App() {
                 })}
               </div>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

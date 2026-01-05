@@ -17,6 +17,7 @@ const Card = ({ user, allUsers, setAllUsers }) => {
     setAllUsers(filtered);
     localStorage.setItem("users", JSON.stringify(filtered));
   };
+
   return (
     <>
       <div
